@@ -1,0 +1,119 @@
+# Compiled Java files
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven build directory
+target/
+dependency-reduced-pom.xml
+
+# IDE files
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+.vscode/
+*.swp
+*.swo
+*~
+
+# IntelliJ IDEA
+.idea/
+*.iws
+out/
+
+# Eclipse
+.metadata/
+bin/
+tmp/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Test outputs
+test-output/
+allure-results/
+reports/
+target/surefire-reports/
+target/failsafe-reports/
+
+# Logs
+logs/
+*.log
+log/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# Configuration files with sensitive data
+config.properties
+secrets.properties
+*.properties.local
+*.yml.local
+*.yaml.local
+
+# Test data files (if they contain generated data)
+test-data/
+temp/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Java heap dump
+*.hprof
+
+# Allure raw history (if not needed in repo)
+allure-results/history/
+
+# Package files
+*.zip
+*.tar.gz
+*.rar
+
+# Database files
+*.db
+*.sqlite
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Docker
+docker-compose.override.yml
+*.log
+
+# Since you have allure-results folder
+allure-results/
+!allure-results/.gitkeep
+
+# Since you have logs folder  
+logs/
+!logs/.gitkeep
+
+# Since you have reports folder
+reports/
+!reports/.gitkeep
+
+# To keep folders but ignore contents, add .gitkeep files:
+# Create empty files:
+# - allure-results/.gitkeep
+# - logs/.gitkeep  
+# - reports/.gitkeep
