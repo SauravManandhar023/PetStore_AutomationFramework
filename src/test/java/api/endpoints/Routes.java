@@ -5,12 +5,23 @@ public class Routes {
 	public static String base_url = "https://petstore.swagger.io/v2";
 
 	//User Module
+	public static String postUserURL = base_url + "/user";
+	public static String getUserURL = base_url + "/user/{username}";
+	public static String updateUserURL = base_url + "/user/{username}";
+	public static String deleteUserURL = base_url + "/user/{username}";
 	
-	public static String postuserURL = base_url + "/user";
-	public static String getuserURL = base_url + "/user/{username}";
-	public static String updateuserURL = base_url + "/user/{username}";
-	public static String deleteuserURL = base_url + "/user/{username}";
 	
+	
+	
+	//Pet Module
+	public static String postPetURL = base_url + "/pet";
+	public static String getPetURL = base_url + "/pet/{petId}";
+	public static String fullUpdatePetURL = base_url + "/pet";  // FULL update (ID in body)
+	public static String partialUpdatePetURL = base_url + "/pet/{petId}";
+	public static String deletePetURL = base_url + "/pet/{petId}";
+	
+	
+ 	
 	
 	
 	

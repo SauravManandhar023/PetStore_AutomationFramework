@@ -66,7 +66,7 @@ public class UserTest {
 		
 		Assert.assertEquals(res.getStatusCode(), 200);
 		
-		// IMPORTANT FIX: The update response doesn't contain user details
+		// IMPORTANT : The update response doesn't contain user details
 		// We need to do a GET request to verify the updates
 		Response getRes = UserEndPoints.getUser(username);
 		getRes.then().log().all();

@@ -15,7 +15,7 @@ public class UserEndPoints {
 			.accept(ContentType.JSON)
 			.body(user_payload)
 		.when()
-			.post(Routes.postuserURL);
+			.post(Routes.postUserURL);
 		
 		return res;
 		
@@ -26,7 +26,7 @@ public class UserEndPoints {
 		Response res = given()
 			.pathParam("username", userName)
 		.when()
-			.get(Routes.getuserURL);
+			.get(Routes.getUserURL);
 		
 		return res;
 	}
@@ -39,7 +39,7 @@ public class UserEndPoints {
 			.pathParam("username", userName)
 			.body(user_payload)
 		.when()
-			.put(Routes.updateuserURL);
+			.put(Routes.updateUserURL);
 		return res;
 		
 	}
@@ -50,7 +50,7 @@ public class UserEndPoints {
 			.accept(ContentType.JSON)
 			.pathParam("username", userName)
 		.when()
-			.delete(Routes.deleteuserURL);
+			.delete(Routes.deleteUserURL);
 				
 			return res;
 	}
