@@ -2,6 +2,8 @@ package api.endpoints;
 
 import static io.restassured.RestAssured.given;
 
+import java.io.File;
+
 import api.payload.Pet;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -64,5 +66,18 @@ public class PetEndPoints {
 			.delete(Routes.deletePetURL);
 		
 		return res;
+	}
+	
+	public static Response uploadPetImage(int PetId, String additionalMetadata, File imgFile) {
+		
+		Response res = given()
+				.pathParam("petId", PetId)
+				.multiPart("additionalMetadata", additionalMetadata)
+				.multiPart("file", imgFile)
+			.when()
+				.post(Routes.uploadImageURL);
+		
+		return res;
+				
 	}
 }

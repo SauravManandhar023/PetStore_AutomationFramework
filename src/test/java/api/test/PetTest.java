@@ -1,5 +1,6 @@
 package api.test;
 
+import java.io.File;
 import java.util.Arrays;
 
 import org.testng.Assert;
@@ -124,7 +125,28 @@ public class PetTest {
 		Assert.assertEquals(getRes.jsonPath().getString("name"), updatedPet.getName());
 	}
 	
-	@Test(priority = 5)
+
+	@Test(priority = 6)
+	
+	public void testUploadPetImage() {
+		
+		String metadata = "Pet profile picture - " + fake.lorem().sentence();
+		
+		File img = new File("src/test/resources/test-image.jpg");
+		
+		Response res = PetEndPoints.uploadPetImage(petId, metadata, img);
+		res.then().statusCode(200);
+		
+		Assert.assertEquals(res.jsonPath().getString("type"), "unknown");
+		Assert.assertNotNull(res.jsonPath().getString("message"));
+		
+		res.then().log().all();
+		
+	}
+	
+	
+	
+	@Test(priority = 7)
 	
 	public void testDeletePet() {
 		

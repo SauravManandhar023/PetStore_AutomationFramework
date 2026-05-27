@@ -19,6 +19,7 @@ public class Routes {
 	public static String fullUpdatePetURL = base_url + "/pet";  // FULL update (ID in body)
 	public static String partialUpdatePetURL = base_url + "/pet/{petId}";
 	public static String deletePetURL = base_url + "/pet/{petId}";
+	public static String uploadImageURL = base_url + "/pet/{petId}/uploadImage";
 	
 	
  	
