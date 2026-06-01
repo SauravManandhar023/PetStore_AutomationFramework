@@ -38,7 +38,7 @@ public class PetEndPoints {
 		Response res = given()
 			.contentType(ContentType.JSON)
 			.accept(ContentType.JSON)
-			.body(pet_payload)  // ✅ FIXED: Missing body!
+			.body(pet_payload)  
 		.when()
 			.put(Routes.fullUpdatePetURL);
 		

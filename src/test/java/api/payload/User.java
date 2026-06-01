@@ -2,21 +2,21 @@ package api.payload;
 
 public class User {
 	  
-	  int id;
+	  String id;
 	  String username;
 	  String firstName;
 	  String lastName;
 	  String email;
 	  String password;
 	  String phone;
-	  int userStatus = 0;
+	  String userStatus = "0";
 	  
 	  
 	  
-	  public int getId() {
+	  public String getId() {
 		return id;
 	}
-	  public void setId(int id) {
+	  public void setId(String id) {
 		  this.id = id;
 	  }
 	  public String getUsername() {
@@ -55,10 +55,10 @@ public class User {
 	  public void setPhone(String phone) {
 		  this.phone = phone;
 	  }
-	  public int getUserStatus() {
+	  public String getUserStatus() {
 		  return userStatus;
 	  }
-	  public void setUserStatus(int userStatus) {
+	  public void setUserStatus(String userStatus) {
 		  this.userStatus = userStatus;
 	  }
 	  
