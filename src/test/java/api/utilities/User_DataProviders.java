@@ -31,16 +31,16 @@ public class User_DataProviders {
 		
 	}
 	
-	@DataProvider(name = "Username")
-	public String[] getUserNames() throws IOException{
+	@DataProvider(name = "Username") // even if only 1D array is needed we have to use 2D array as DataProvider doesn't use 1D array
+	public String[][] getUserNames() throws IOException{
 		XL_Utility xl = new XL_Utility(excel_path);
 		
 		int row_count = xl.getRowCount(sheet_name);
 		
-		String apidata[] = new String[row_count];
+		String apidata[][] = new String[row_count][1] ; // 2D array with 1 column
 		
 		for(int i = 1; i<= row_count; i++) {
-			apidata[i-1] = xl.getCellData(sheet_name, i, 1);
+			apidata[i-1][0] = xl.getCellData(sheet_name, i, 1);
 		}
 		
 		return apidata;
@@ -51,7 +51,7 @@ public class User_DataProviders {
 	public Object[][] getSpecificUsername() throws IOException {
 	    
 	    XL_Utility xl = new XL_Utility(excel_path);
-	    String username = xl.getCellData(sheet_name, 1, 1); // Only gets the username of first perosn
+	    String username = xl.getCellData(sheet_name, 1, 1); // Only gets the username of first person
 	    
 	    return new Object[][] {
 	        { username }  // This is a 2D array with one row and one column

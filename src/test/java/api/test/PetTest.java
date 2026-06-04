@@ -20,7 +20,7 @@ public class PetTest {
 	Faker fake;
 	Pet petObj;
 	
-	int petId;
+	String petId;
 	
 	
 	// Helper method for image URL
@@ -39,14 +39,14 @@ public class PetTest {
 		petObj = new Pet(); 
 		
 		Category category = new Category();
-		category.setId(fake.number().numberBetween(1, 100));
+		category.setId(Integer.toString(fake.number().numberBetween(1, 100)));
 		category.setName(fake.animal().name());
 		
 		Tag tag = new Tag();
-		tag.setId(fake.number().numberBetween(1, 100));
+		tag.setId(Integer.toString(fake.number().numberBetween(1, 100)));
 		tag.setName(fake.lorem().word());
 		
-		petObj.setId(fake.number().numberBetween(1000, 9999));
+		petObj.setId(Integer.toString(fake.number().numberBetween(1000, 9999)));
 		petObj.setCategory(category);
 		petObj.setName(fake.dog().name());
 		petObj.setPhotoUrls(Arrays.asList(getImageUrl()));
@@ -98,11 +98,11 @@ public class PetTest {
 	public void testFullUpdatePet() {
 		
 		Category category = new Category();
-		category.setId(fake.number().numberBetween(1, 100));
+		category.setId(Integer.toString(fake.number().numberBetween(1, 100)));
 		category.setName(fake.animal().name());
 		
 		Tag tag = new Tag();
-		tag.setId(fake.number().numberBetween(1, 100));
+		tag.setId(Integer.toString(fake.number().numberBetween(1, 100)));
 		tag.setName(fake.lorem().word());
 		
 		// Create a NEW pet object for full update (don't reuse the same reference)
@@ -121,7 +121,7 @@ public class PetTest {
 		// Verify the update
 		Response getRes = PetEndPoints.getPet(petId);
 		getRes.then().log().all();
-		Assert.assertEquals(getRes.jsonPath().getInt("id"), updatedPet.getId());
+		Assert.assertEquals(getRes.jsonPath().getString("id"), updatedPet.getId());
 		Assert.assertEquals(getRes.jsonPath().getString("name"), updatedPet.getName());
 	}
 	

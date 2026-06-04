@@ -26,19 +26,19 @@ public class Pet {
 //		}
 	
 	
-	int id;
-	Category category;           // Custom Data-Type
+	String id;
+	Category category;           
 	String name;			
 	List<String> photoUrls;      // Array of Strings
 	List<Tag> tags;              // Array of Tag (Custom) Objects
 	String status;
 	
 	
-		public int getId() {
+		public String getId() {
 			return id;
 		}
 		
-		public void setId(int id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 		
@@ -85,13 +85,13 @@ public class Pet {
 	
 	public static class Category{
 		
-		int id;
+		String id;
 		String name;
 		
-		public int getId() {
+		public String getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 		public String getName() {
@@ -105,13 +105,13 @@ public class Pet {
 	
 	public static class Tag{
 		
-		int id;
+		String id;
 		String name;
 		
-		public int getId() {
+		public String getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 		public String getName() {

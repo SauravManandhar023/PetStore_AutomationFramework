@@ -22,7 +22,7 @@ public class PetEndPoints {
 		return res;
 	}
 	
-	public static Response getPet(int petID){
+	public static Response getPet(String petID){
 		
 		Response res = given()
 			.accept(ContentType.JSON)
@@ -45,7 +45,7 @@ public class PetEndPoints {
 		return res;
 	}
 	
-	public static Response partialUpdatePet(int petID, String Name, String Status) {
+	public static Response partialUpdatePet(String petID, String Name, String Status) {
 		
 		Response res = given()
 			.contentType("application/x-www-form-urlencoded")
@@ -58,7 +58,7 @@ public class PetEndPoints {
 		return res;
 	}
 	
-	public static Response deletePet(int PetID) {
+	public static Response deletePet(String PetID) {
 		
 		Response res = given()
 			.pathParam("petId", PetID)
@@ -68,7 +68,7 @@ public class PetEndPoints {
 		return res;
 	}
 	
-	public static Response uploadPetImage(int PetId, String additionalMetadata, File imgFile) {
+	public static Response uploadPetImage(String PetId, String additionalMetadata, File imgFile) {
 		
 		Response res = given()
 				.pathParam("petId", PetId)
