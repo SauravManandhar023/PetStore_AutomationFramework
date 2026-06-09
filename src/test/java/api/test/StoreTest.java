@@ -14,7 +14,7 @@ public class StoreTest {
 	
 	Faker fake;
 	Store str;
-	int orderId;
+	long orderId;
 	
 	@BeforeClass
 	

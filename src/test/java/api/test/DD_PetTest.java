@@ -18,16 +18,16 @@ public class DD_PetTest {
 	public void testCreatePet(String id, String name, String categoryID, String categoryName, String photoURL, String tagID, String tagName, String status) {
 		
 		Category category = new Category();
-		category.setId(categoryID);
+		category.setId(Integer.parseInt(categoryID));
 		category.setName(categoryName);
 		
 		Tag tag = new Tag();
-		tag.setId(tagID);
+		tag.setId(Integer.parseInt(tagID));
 		tag.setName(tagName);
 		
 		
 		Pet pet_payload = new Pet();
-		pet_payload.setId(id);
+		pet_payload.setId(Integer.parseInt(id));
 		pet_payload.setName(name);
 		pet_payload.setCategory(category);
 		pet_payload.setPhotoUrls(Arrays.asList(photoURL));
@@ -43,7 +43,7 @@ public class DD_PetTest {
 	@Test (priority = 2, dataProvider = "PetID", dataProviderClass = Pet_DataProviders.class)
 	public void testRetrievesPet(String id) {
 		
-		Response res =PetEndPoints.getPet(id);
+		Response res =PetEndPoints.getPet(Integer.parseInt(id));
 		res.then().log().all();
 		
 		Assert.assertEquals(res.statusCode(), 200);
@@ -56,13 +56,13 @@ public class DD_PetTest {
 		name = "Bommer";
 		status = "sold";
 		
-		Response res =PetEndPoints.partialUpdatePet(id, name, status);
+		Response res =PetEndPoints.partialUpdatePet(Integer.parseInt(id), name, status);
 		res.then().log().all();
 		
 		Assert.assertEquals(res.statusCode(), 200);
 		
 		// Verify update
-	    Response getRes = PetEndPoints.getPet(id);
+	    Response getRes = PetEndPoints.getPet(Integer.parseInt(id));
 
 	    Assert.assertEquals(getRes.statusCode(), 200);
 	    Assert.assertEquals(getRes.jsonPath().getString("name"), name);
@@ -76,16 +76,16 @@ public class DD_PetTest {
 	public void testFullPetUpdate(String id, String name, String categoryID, String categoryName, String photoURL, String tagID, String tagName, String status) {
 		
 		Category category = new Category();
-		category.setId(categoryID);
+		category.setId(Integer.parseInt(categoryID));
 		category.setName(categoryName);
 		
 		Tag tag = new Tag();
-		tag.setId(tagID);
+		tag.setId(Integer.parseInt(tagID));
 		tag.setName(tagName);
 		
 		
 		Pet pet_payload = new Pet();
-		pet_payload.setId(id);
+		pet_payload.setId(Integer.parseInt(id));
 		pet_payload.setName(name);
 		pet_payload.setCategory(category);
 		pet_payload.setPhotoUrls(Arrays.asList(photoURL));
@@ -101,13 +101,13 @@ public class DD_PetTest {
 	@Test (priority = 5, dataProvider = "PetID", dataProviderClass = Pet_DataProviders.class)
 	public void testDeleteAllPet(String id) {
 		
-		Response res =PetEndPoints.deletePet(id);
+		Response res =PetEndPoints.deletePet(Integer.parseInt(id));
 		res.then().log().all();
 		
 		Assert.assertEquals(res.statusCode(), 200);
 		
 		// Verify delete
-	    Response getRes = PetEndPoints.getPet(id);
+	    Response getRes = PetEndPoints.getPet(Integer.parseInt(id));
 
 	    Assert.assertEquals(getRes.statusCode(), 404);
 		

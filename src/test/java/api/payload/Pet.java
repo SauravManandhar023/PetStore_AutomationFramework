@@ -26,7 +26,7 @@ public class Pet {
 //		}
 	
 	
-	String id;
+	int id;
 	Category category;           
 	String name;			
 	List<String> photoUrls;      // Array of Strings
@@ -34,11 +34,11 @@ public class Pet {
 	String status;
 	
 	
-		public String getId() {
+		public int getId() {
 			return id;
 		}
 		
-		public void setId(String id) {
+		public void setId(int id) {
 			this.id = id;
 		}
 		
@@ -85,13 +85,13 @@ public class Pet {
 	
 	public static class Category{
 		
-		String id;
+		int id;
 		String name;
 		
-		public String getId() {
+		public int getId() {
 			return id;
 		}
-		public void setId(String id) {
+		public void setId(int id) {
 			this.id = id;
 		}
 		public String getName() {
@@ -105,13 +105,13 @@ public class Pet {
 	
 	public static class Tag{
 		
-		String id;
+		int id;
 		String name;
 		
-		public String getId() {
+		public int getId() {
 			return id;
 		}
-		public void setId(String id) {
+		public void setId(int id) {
 			this.id = id;
 		}
 		public String getName() {

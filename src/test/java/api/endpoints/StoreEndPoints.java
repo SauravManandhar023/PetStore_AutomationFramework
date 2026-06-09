@@ -21,6 +21,7 @@ public class StoreEndPoints {
 	public static Response placeOrder(Store order_payload) {
 		
 		Response res = given()
+				.log().all()
 				.contentType("application/json")
 				.accept(ContentType.JSON) 
 				.body(order_payload)
@@ -29,7 +30,7 @@ public class StoreEndPoints {
 		return res;
 	}
 	
-	public static Response findOrder(int oId) {
+	public static Response findOrder(long oId) {
 		
 		Response res = given()
 				.accept(ContentType.JSON)
@@ -40,7 +41,7 @@ public class StoreEndPoints {
 		return res;
 	}
 	
-	public static Response deleteOrder(int order_id) {
+	public static Response deleteOrder(long order_id) {
 		
 		Response res = given()
 				.accept(ContentType.JSON)

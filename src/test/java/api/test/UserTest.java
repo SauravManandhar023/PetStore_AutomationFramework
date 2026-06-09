@@ -22,7 +22,7 @@ public class UserTest {
 		fake = new Faker();
 		userPayload = new User();
 		
-		userPayload.setId(Integer.toString(fake.idNumber().hashCode()));
+		userPayload.setId(fake.idNumber().hashCode());
 		// FIX: Use username() instead of fullName() to avoid spaces
 		userPayload.setUsername(fake.name().username());
 		userPayload.setFirstName(fake.name().firstName());

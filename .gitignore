@@ -117,3 +117,8 @@ reports/
 # - allure-results/.gitkeep
 # - logs/.gitkeep  
 # - reports/.gitkeep
+
+# Add these lines to your .gitignore file
+.allure/
+allure-results/
+allure-report/

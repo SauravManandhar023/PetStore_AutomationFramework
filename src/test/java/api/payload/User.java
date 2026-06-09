@@ -2,7 +2,7 @@ package api.payload;
 
 public class User {
 	  
-	  String id;
+	  int id;
 	  String username;
 	  String firstName;
 	  String lastName;
@@ -13,10 +13,10 @@ public class User {
 	  
 	  
 	  
-	  public String getId() {
+	  public int getId() {
 		return id;
 	}
-	  public void setId(String id) {
+	  public void setId(int id) {
 		  this.id = id;
 	  }
 	  public String getUsername() {

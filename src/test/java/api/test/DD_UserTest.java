@@ -14,7 +14,7 @@ public class DD_UserTest {
 	public void testCreateUser(String id, String username, String firstName, String lastName, String email, String password, String phone, String userStatus) {
 		
 		User userPayload = new User();
-		userPayload.setId(id);
+		userPayload.setId(Integer.parseInt(id));
 		userPayload.setUsername(username);
 		userPayload.setFirstName(firstName);
 		userPayload.setLastName(lastName);
@@ -43,7 +43,7 @@ public class DD_UserTest {
 	public void testUpdateSpecificUser(String username) {  // Single method cannot have multiple data-providers so we get the specifc username using data provider and manually update the data for the request body
 		
 		User updt_userpayload = new User();
-		updt_userpayload.setId("106");
+		updt_userpayload.setId(106);
 		updt_userpayload.setUsername("updated_name");
 		updt_userpayload.setFirstName("UpdatedFirst");
 	    updt_userpayload.setLastName("UpdatedLast");
