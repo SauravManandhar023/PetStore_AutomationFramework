@@ -3,6 +3,8 @@ package api.test;
 import java.io.File;
 import java.util.Arrays;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -21,6 +23,7 @@ public class PetTest {
 	Pet petObj;
 	
 	int petId;
+	Logger logger;
 	
 	
 	// Helper method for image URL
@@ -54,30 +57,37 @@ public class PetTest {
 		petObj.setStatus("available");
 		
 		petId = petObj.getId();		
+		
+		logger = LogManager.getLogger(this.getClass());
 	}
 	
 	@Test(priority = 1)
 	
 	public void testCreatePet() {
 		
+		logger.info("******** Creating Pet ********");
 		Response res = PetEndPoints.createPet(petObj);
 		res.then().log().all();
 		Assert.assertEquals(res.getStatusCode(), 200);
+		logger.info("******** Pet Created ********");
 	}
 	
 	@Test(priority = 2)  // Changed from priority 1 to 2
 	
 	public void testRetrievePet() {
 		
+		logger.info("******** Retriecing Pet ********");
 		Response res = PetEndPoints.getPet(petId);
 		res.then().log().all();
 		Assert.assertEquals(res.getStatusCode(), 200);
+		logger.info("******** Pet Retrieved ********");
 	}
 	
 	@Test(priority = 3)
 	
 	public void testPartialUpdatePet() {
 		
+		logger.info("******** Partial Updating Pet ********");
 		String name = "Boomer";
 		String status = "sold";
 		
@@ -90,6 +100,7 @@ public class PetTest {
 		getRes.then().log().all();
 		Assert.assertEquals(getRes.jsonPath().getString("name"), name); 
 		Assert.assertEquals(getRes.jsonPath().getString("status"), status); 
+		logger.info("******** Pet Partailly Updated ********");
 	}
 
 	
@@ -97,6 +108,7 @@ public class PetTest {
 	
 	public void testFullUpdatePet() {
 		
+		logger.info("******** Fully Updating Pet ********");
 		Category category = new Category();
 		category.setId(fake.number().numberBetween(1, 100));
 		category.setName(fake.animal().name());
@@ -123,6 +135,7 @@ public class PetTest {
 		getRes.then().log().all();
 		Assert.assertEquals(getRes.jsonPath().getInt("id"), updatedPet.getId());
 		Assert.assertEquals(getRes.jsonPath().getString("name"), updatedPet.getName());
+		logger.info("******** Pet Fully Updated ********");
 	}
 	
 
@@ -130,6 +143,7 @@ public class PetTest {
 	
 	public void testUploadPetImage() {
 		
+		logger.info("******** Uploading Pet Image ********");
 		String metadata = "Pet profile picture - " + fake.lorem().sentence();
 		
 		File img = new File("src/test/resources/test-image.jpg");
@@ -141,6 +155,7 @@ public class PetTest {
 		Assert.assertNotNull(res.jsonPath().getString("message"));
 		
 		res.then().log().all();
+		logger.info("******** Pet Image Uploaded  ********");
 		
 	}
 	
@@ -150,6 +165,7 @@ public class PetTest {
 	
 	public void testDeletePet() {
 		
+		logger.info("******** Deleting Pet ********");
 		Response res = PetEndPoints.deletePet(petId);
 		res.then().log().all();
 		Assert.assertEquals(res.getStatusCode(), 200);
@@ -157,5 +173,6 @@ public class PetTest {
 		// Verify pet is deleted (should return 404)
 		Response getRes = PetEndPoints.getPet(petId);
 		Assert.assertEquals(getRes.getStatusCode(), 404);
+		logger.info("******** Pet Deleted ********");
 	}
 }

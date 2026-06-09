@@ -122,3 +122,17 @@ reports/
 .allure/
 allure-results/
 allure-report/
+
+# Reports
+reports/
+!reports/.gitkeep
+
+# Project specific logs
+logs/
+allure-results/
+allure-report/
+test-output/
+target/
+
+# Any .log files anywhere
+*.log

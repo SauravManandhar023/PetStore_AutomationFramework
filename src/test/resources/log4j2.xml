@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    
+    <Properties>
+        <Property name="basePath">./logs</Property>
+        <Property name="logPattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+    </Properties>
+    
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${logPattern}"/>
+        </Console>
+        
+        <!-- File Appender -->
+        <RollingFile name="RollingFile" 
+                     fileName="${basePath}/automation.log" 
+                     filePattern="${basePath}/automation-%d{yyyy-MM-dd-HH-mm-ss}.log.gz">
+            
+            <PatternLayout pattern="${logPattern}"/>
+            
+            <!-- Policies for rolling -->
+            <Policies>
+                <!-- Roll on size -->
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+                <!-- Roll daily -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            
+            <!-- Keep max 10 rollover files -->
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+    
+    <Loggers>
+        <!-- API specific logger -->
+        <Logger name="api" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+        
+        <!-- REST Assured logger -->
+        <Logger name="io.restassured" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+        
+        <!-- Root Logger -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+    
+</Configuration>
